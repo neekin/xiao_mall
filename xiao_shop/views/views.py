@@ -15,6 +15,16 @@ from xiao_shop.conf import xiao_shop_settings
 from xiao_shop.utils import add_upload_file
 from xiao_shop.forms import XiaoShopLoginForm, XiaoShopRegisterForm
 
+from ..models import RechargeableCard
+
+
+import random , string ,hashlib
+
+
+def random_string_generator(str_size=32):
+    allowed_chars = string.ascii_letters
+    base_str = ''.join(random.choice(allowed_chars) for x in range(str_size))
+    return hashlib.md5(base_str.encode('utf-8')).hexdigest()
 
 class BaseView:
     """全局基类视图"""
@@ -42,6 +52,13 @@ class XiaoShopLoginRequiredMixin(LoginRequiredMixin):
 
 
 class XiaoShopLoginView(BaseView, LoginView):
+    # i=0
+    # money = [50,100,200]
+    # random.choice(money)
+    # while i<50:
+    #     RechargeableCard.objects.create(cardnum=random_string_generator(),num=random.choice(money))
+    #     i=i+1
+    
     """
     登录视图
     """
@@ -126,6 +143,3 @@ class XiaoShopCategoryAllView(BaseView, TemplateView):
         context = super().get_context_data(**kwargs)
         context["navs"] = XiaoShopCategory.get_navs()
         return context
-    
-    
-    

@@ -10,7 +10,7 @@ from ..models import (
     XiaoShopCategory, XiaoShopBrand, XiaoShopSPU,
     XiaoShopSKU, XiaoShopSPUSpec, XiaoShopSpecToOption,
     XiaoShopSPUSpecOption, XiaoShopSPUCarousel, XiaoShopingCart, XiaoShopOrderInfo,
-    XiaoShopOrderSKU, XiaoShopBanner, XiaoShopRate
+    XiaoShopOrderSKU, XiaoShopBanner, XiaoShopRate,RechargeableCard
 )
 
 # admin.site.register(XiaoShopRate)
@@ -209,3 +209,9 @@ class XiaoShopOrderInfoAdmin(XiaoShopAdmin):
 
     def has_add_permission(self, request) -> bool:
         return False
+
+
+@admin.register(RechargeableCard)
+class XiaoRechargeableCardAdmin(XiaoShopAdmin):
+    list_display = ('id', 'cardnum', 'num', 'add_date')
+    readonly_fields = ('is_use',)

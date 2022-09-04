@@ -28,14 +28,3 @@ urlpatterns = [
     path('logout/', views.XiaoShopLogoutView.as_view(), name='logout'),
     path('upload_img/', views.XiaoShopUploadImage.as_view(), name="upload_img"),
 ]
-
-
-# # 支付宝支付的回调URL
-# from rest_framework.urlpatterns import format_suffix_patterns
-# from xiao_shop.api.views import AliPayView
-
-# api_urlpatterns = [
-#     path('api/alipay/', AliPayView.as_view(), name="alipay"),
-# ]
-
-# urlpatterns += format_suffix_patterns(api_urlpatterns)
