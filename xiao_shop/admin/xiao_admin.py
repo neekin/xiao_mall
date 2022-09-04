@@ -213,5 +213,5 @@ class XiaoShopOrderInfoAdmin(XiaoShopAdmin):
 
 @admin.register(RechargeableCard)
 class XiaoRechargeableCardAdmin(XiaoShopAdmin):
-    list_display = ('id', 'cardnum', 'num', 'add_date')
+    list_display = ('id', 'cardnum', 'num','is_use', 'add_date')
     readonly_fields = ('is_use',)
